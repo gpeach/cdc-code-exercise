@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Review</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+    Part 2: Frontend page / JS
+    ------
+    Add JS and styles to perform a fake request from your
+    PHP API, using messase.json as a dummy GET request.
+    - Display the message
+    - Styled the message for the front end
+-->
+<header>
+    <h1>Message Request</h1>
+</header>
+<main>
+    <section>
+
+        <div id="message-request">
+            <div id="message-title" style = "font-size:24px"></div>
+            <div id="message-body"></div>
+            <div id="message-from"></div>
+            <div id="message-to"></div>
+            <div id="message-created"></div>
+            <div id="message-updated"></div>
+        </div>
+
+    </section>
+</main>
+
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('./message.json')
+    .then((res)=>{
+        let created = new Date(res.data['created']);
+        let updated = new Date(res.data['updated']);
+        document.getElementById('message-title').innerHTML = res.data['title'];
+        document.getElementById('message-body').innerHTML = res.data['body'];
+        document.getElementById('message-from').innerHTML = res.data['from'];
+        document.getElementById('message-to').innerHTML = res.data['to'];
+        document.getElementById('message-created').innerHTML = created.toString();
+        document.getElementById('message-updated').innerHTML = updated.toString();
+    }
+    ).catch((err)=>{
+        console.log(err);
+    }
+    )
+</script>
+</html>
