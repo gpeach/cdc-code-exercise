@@ -4,7 +4,6 @@ namespace App\Doctrine\Subscriber;
 
 use App\Entity\Message;
 use Doctrine\Common\EventSubscriber;
-use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Events;
 
@@ -28,8 +27,8 @@ class UpdateSubscriber implements EventSubscriber
             return;
         }
 
-        if ($eventArgs->hasChangedField('body')) {
-            $eventArgs->setNewValue('body', $eventArgs->getOldValue('body'));
+        if ($eventArgs->hasChangedField('from')) {
+            $eventArgs->setNewValue('from', $eventArgs->getOldValue('from'));
         }
     }
 }

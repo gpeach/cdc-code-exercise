@@ -5,9 +5,8 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Table(name="message")
@@ -50,11 +49,13 @@ class Message
 
     /**
      * @ORM\Column(type="datetimetz", nullable=true)
+     * @Gedmo\Timestampable(on="create")
      */
     private $created;
 
     /**
      * @ORM\Column(type="datetimetz", nullable=true)
+     * @Gedmo\Timestampable(on="update")
      */
     private $updated;
 
