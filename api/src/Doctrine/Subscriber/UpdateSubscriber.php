@@ -28,7 +28,7 @@ class UpdateSubscriber implements EventSubscriber
             return;
         }
 
-        if ($eventArgs->hasChangedField('body') && $eventArgs->getOldValue('body') == 'Alice') {
+        if ($eventArgs->hasChangedField('body')) {
             $eventArgs->setNewValue('body', $eventArgs->getOldValue('body'));
         }
     }
